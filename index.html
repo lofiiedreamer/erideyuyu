@@ -1,59 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You 💛</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>dear noorarissya</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{
+  height:100dvh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:space-between;
+  background:linear-gradient(170deg,#dff0f7 0%,#eaf6fb 40%,#c8e8f5 100%);
+  font-family:'Lato',sans-serif;
+  padding:0;
+}
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff0f5;
-      font-family: 'Georgia', serif;
-      padding: 2rem;
-    }
+/* frosted glass card */
+.card{
+  position:relative;z-index:2;
+  width:92%;max-width:400px;
+  margin-top:clamp(12px,3vh,28px);
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.75);
+  border-radius:24px;
+  padding:clamp(14px,3vh,22px) 22px clamp(12px,2.5vh,18px);
+  text-align:center;
+  box-shadow:0 8px 32px rgba(30,100,140,0.10);
+  flex-shrink:0;
+}
 
-    .card {
-      max-width: 520px;
-      text-align: center;
-    }
+.for-name{
+  font-size:0.68rem;letter-spacing:0.32em;
+  text-transform:uppercase;color:#3a8aaa;
+  font-weight:400;
+  opacity:0;animation:rise 0.8s 0.2s ease forwards;
+}
 
-    .emoji { font-size: 3rem; margin-bottom: 1rem; }
+.photo-wrap{
+  margin:clamp(8px,1.5vh,14px) auto;
+  width:clamp(72px,18vw,95px);
+  opacity:0;animation:rise 0.8s 0.4s ease forwards;
+}
+.photo-wrap img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:14px;
+  border:3px solid rgba(255,255,255,0.9);
+  box-shadow:0 4px 16px rgba(30,100,140,0.18);
+  display:block;
+}
 
-    h1 {
-      font-size: 2rem;
-      color: #c0397a;
-      margin-bottom: 1rem;
-    }
+.divider{
+  width:36px;height:1px;
+  background:rgba(60,138,170,0.3);
+  margin:clamp(8px,1.5vh,12px) auto;
+  opacity:0;animation:rise 0.8s 0.6s ease forwards;
+}
 
-    p {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
+.body{opacity:0;animation:rise 0.8s 0.8s ease forwards;}
 
-    .sign {
-      margin-top: 2rem;
-      font-style: italic;
-      color: #c0397a;
-    }
-  </style>
+.body p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,4vw,1.18rem);
+  font-style:italic;font-weight:300;
+  color:#0f3d52;
+  line-height:1.85;
+  margin-bottom:clamp(8px,1.5vh,12px);
+}
+.body p:last-child{margin-bottom:0;}
+
+.word{display:inline;opacity:0;transition:opacity 0.4s ease;}
+.word.show{opacity:1;}
+
+.sign{
+  margin-top:clamp(8px,1.8vh,14px);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(0.95rem,3.5vw,1.05rem);
+  color:#1a6480;font-style:italic;font-weight:300;
+  opacity:0;animation:rise 0.8s 4s ease forwards;
+}
+.date{
+  margin-top:4px;
+  font-size:0.65rem;letter-spacing:0.16em;
+  color:#5a9fba;font-weight:300;
+  opacity:0;animation:rise 0.8s 4.3s ease forwards;
+}
+
+@keyframes rise{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ocean */
+.ocean-wrap{
+  width:100%;
+  height:clamp(110px,22vh,160px);
+  position:relative;z-index:1;
+  flex-shrink:0;overflow:hidden;
+}
+#ocean{display:block;width:100%;height:100%;}
+
+/* floating bubbles bg */
+.bubble{
+  position:fixed;border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.35);
+  animation:float linear infinite;
+  pointer-events:none;z-index:0;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0.8);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.6}
+  100%{transform:translateY(-10vh) scale(1.1);opacity:0}
+}
+</style>
 </head>
 <body>
-  <div class="card">
-    <div class="emoji">🌸</div>
-    <h1>To My Person</h1>
 
-    <p>Every day with you feels like something I never knew I needed.</p>
-    <p>Thank you for being you — patient, kind, and endlessly wonderful.</p>
-    <p>I just wanted to put it somewhere on the internet, so the whole world knows.</p>
+<!-- background bubbles -->
+<div class="bubble" style="width:60px;height:60px;left:8%;animation-duration:12s;animation-delay:0s;"></div>
+<div class="bubble" style="width:35px;height:35px;left:75%;animation-duration:9s;animation-delay:2s;"></div>
+<div class="bubble" style="width:45px;height:45px;left:55%;animation-duration:14s;animation-delay:5s;"></div>
+<div class="bubble" style="width:25px;height:25px;left:30%;animation-duration:10s;animation-delay:1s;"></div>
+<div class="bubble" style="width:50px;height:50px;left:85%;animation-duration:16s;animation-delay:7s;"></div>
+<div class="bubble" style="width:20px;height:20px;left:18%;animation-duration:8s;animation-delay:3s;"></div>
 
-    <div class="sign">— yours, always 💛</div>
+<div class="card">
+  <p class="for-name">for noorarissya</p>
+
+  <div class="photo-wrap">
+    <img src="eri.jpg" alt="Noorarissya"/>
   </div>
+
+  <div class="divider"></div>
+
+  <div class="body">
+    <p id="p1"></p>
+    <p id="p2"></p>
+  </div>
+
+  <p class="sign">— sincerely , e</p>
+  <p class="date">27 · 05 · 2026</p>
+</div>
+
+<div class="ocean-wrap">
+  <canvas id="ocean"></canvas>
+  <canvas id="duck" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
+</div>
+
+<script>
+/* ocean */
+const oc=document.getElementById('ocean');
+const ox=oc.getContext('2d');
+let ot=0;
+function resizeOc(){oc.width=oc.offsetWidth;oc.height=oc.offsetHeight;}
+resizeOc();addEventListener('resize',resizeOc);
+
+function drawOcean(){
+  const W=oc.width,H=oc.height;
+  ox.clearRect(0,0,W,H);
+  const g=ox.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#5bafd4');g.addColorStop(1,'#1a6080');
+  ox.fillStyle=g;ox.fillRect(0,0,W,H);
+  const ws=[
+    {a:8,f:0.013,s:0.65,y:0.15,c:'rgba(255,255,255,0.22)'},
+    {a:6,f:0.020,s:1.05,y:0.40,c:'rgba(255,255,255,0.15)'},
+    {a:4,f:0.030,s:1.50,y:0.65,c:'rgba(255,255,255,0.10)'},
+  ];
+  for(const w of ws){
+    const wy=H*w.y;
+    ox.beginPath();ox.moveTo(0,wy);
+    for(let x=0;x<=W;x+=3)ox.lineTo(x,wy+Math.sin(x*w.f+ot*w.s)*w.a);
+    ox.lineTo(W,H);ox.lineTo(0,H);ox.closePath();
+    ox.fillStyle=w.c;ox.fill();
+  }
+  ox.fillStyle='rgba(255,255,255,0.55)';
+  for(let i=0;i<12;i++){
+    const sx=(i*139+ot*22)%W;
+    const sy=H*0.2+Math.sin(sx*0.025+ot)*5+(i%4)*18;
+    ox.beginPath();ox.arc(sx,sy,1.1,0,Math.PI*2);ox.fill();
+  }
+  ot+=0.016;
+}
+
+/* duck */
+const dc=document.getElementById('duck');
+const dx=dc.getContext('2d');
+let dt=0;
+function resizeDc(){dc.width=dc.offsetWidth;dc.height=dc.offsetHeight;}
+resizeDc();addEventListener('resize',resizeDc);
+
+function drawDuck(ctx,x,y,flip){
+  ctx.save();
+  if(flip){ctx.translate(x*2,0);ctx.scale(-1,1);}
+  ctx.fillStyle='#f5f0e0';
+  ctx.beginPath();ctx.ellipse(x,y+2,15,10,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#e8e0c8';
+  ctx.beginPath();ctx.ellipse(x-2,y+3,10,6,-0.3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#f5f0e0';
+  ctx.beginPath();ctx.arc(x+13,y-5,7,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#2e3a42';
+  ctx.beginPath();ctx.arc(x+16,y-7,1.4,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#f0a830';
+  ctx.beginPath();ctx.moveTo(x+20,y-5);ctx.lineTo(x+26,y-4);ctx.lineTo(x+20,y-2);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#e0d8c0';
+  ctx.beginPath();ctx.moveTo(x-13,y-2);ctx.lineTo(x-21,y-8);ctx.lineTo(x-11,y+2);ctx.closePath();ctx.fill();
+  ctx.restore();
+}
+
+function loop(){
+  drawOcean();
+  const W=dc.width,H=dc.height;
+  dx.clearRect(0,0,W,H);
+  const waterY=H*0.28;
+  const d1x=(dt*20)%(W+80)-10;
+  const d2x=W-((dt*14+200)%(W+80));
+  drawDuck(dx,d1x,waterY+Math.sin(dt*1.8)*3,false);
+  drawDuck(dx,d2x,waterY+Math.sin(dt*1.8+1.3)*3,true);
+  dt+=0.016;
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* word reveal */
+const lines=[
+  {id:'p1',text:'you are the breeze i never noticed i was breathing — quiet, constant, and somehow exactly what i needed.'},
+  {id:'p2',text:'thank you for staying. thank you for existing. thank you for being the kind of presence the heart remembers before the mind does.'},
+];
+function reveal(id,text,start){
+  const el=document.getElementById(id);
+  el.innerHTML='';
+  const words=text.split(' ');
+  words.forEach((w,i)=>{
+    const s=document.createElement('span');
+    s.className='word';s.textContent=w;
+    el.appendChild(s);
+    if(i<words.length-1)el.appendChild(document.createTextNode(' '));
+    setTimeout(()=>s.classList.add('show'),start+i*70);
+  });
+  return start+words.length*70;
+}
+let d=1200;
+for(const l of lines)d=reveal(l.id,l.text,d)+350;
+</script>
 </body>
 </html>
