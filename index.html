@@ -1,59 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You 💛</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Noorarissya</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { min-height: 100vh; overflow-x: hidden; }
+body {
+  background: #f0f7fa;
+  font-family: 'Lato', sans-serif;
+  display: flex; flex-direction: column;
+  align-items: center; min-height: 100vh;
+}
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff0f5;
-      font-family: 'Georgia', serif;
-      padding: 2rem;
-    }
+.wrap {
+  position: relative; z-index: 1;
+  max-width: 540px; width: 100%;
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  flex: 1;
+}
 
-    .card {
-      max-width: 520px;
-      text-align: center;
-    }
+.for-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: #3a7d99;
+  font-weight: 300;
+  opacity: 0; animation: rise 1s 0.3s ease forwards;
+}
 
-    .emoji { font-size: 3rem; margin-bottom: 1rem; }
+.photo-wrap {
+  margin: 1.2rem auto;
+  width: 200px;
+  opacity: 0; animation: rise 1s 0.6s ease forwards;
+}
+.photo-wrap img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 20px rgba(30,100,130,0.15);
+  display: block;
+}
 
-    h1 {
-      font-size: 2rem;
-      color: #c0397a;
-      margin-bottom: 1rem;
-    }
+.duck-wrap {
+  margin: 0.8rem auto 0.2rem;
+  opacity: 0; animation: rise 1s 0.9s ease forwards;
+  height: 55px;
+}
 
-    p {
-      font-size: 1.1rem;
-      color: #555;
-      line-height: 1.9;
-      margin-bottom: 1rem;
-    }
+.line {
+  width: 50px; height: 1px;
+  background: rgba(60,140,170,0.3);
+  margin: 1rem auto 1.6rem;
+  opacity: 0; animation: rise 1s 1.1s ease forwards;
+}
 
-    .sign {
-      margin-top: 2rem;
-      font-style: italic;
-      color: #c0397a;
-    }
-  </style>
+.body {
+  opacity: 0; animation: rise 1s 1.3s ease forwards;
+}
+
+.body p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-style: italic; font-weight: 300;
+  color: #1a4a5e;
+  line-height: 2;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 0 12px rgba(240,247,250,0.9), 0 0 24px rgba(240,247,250,0.7);
+}
+
+.word { display: inline; opacity: 0; transition: opacity 0.45s ease; }
+.word.show { opacity: 1; }
+
+.sign {
+  margin-top: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; color: #1a5f7a;
+  font-style: italic; font-weight: 300;
+  text-shadow: 0 0 10px rgba(240,247,250,0.9);
+  opacity: 0; animation: rise 1s 4.5s ease forwards;
+}
+.date {
+  margin-top: 0.4rem;
+  font-size: 0.72rem; letter-spacing: 0.18em;
+  color: #5a9ab5; font-weight: 300;
+  opacity: 0; animation: rise 1s 4.8s ease forwards;
+  padding-bottom: 1rem;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ocean-wrap {
+  width: 100%; position: relative;
+  height: 160px; flex-shrink: 0;
+  overflow: hidden;
+}
+canvas#ocean { display: block; width: 100%; height: 100%; }
+</style>
 </head>
 <body>
-  <div class="card">
-    <div class="emoji">🌸</div>
-    <h1>To My Person</h1>
 
-    <p>Every day with you feels like something I never knew I needed.</p>
-    <p>Thank you for being you — patient, kind, and endlessly wonderful.</p>
-    <p>I just wanted to put it somewhere on the internet, so the whole world knows.</p>
+<div class="wrap">
+  <p class="for-name">for noorarissya</p>
 
-    <div class="sign">— yours, always 💛</div>
+  <div class="photo-wrap">
+    <img src="eri.jpg" alt="Noorarissya"/>
   </div>
+
+  <div class="duck-wrap">
+    <canvas id="duck" width="320" height="55" style="display:block;margin:0 auto;"></canvas>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="body">
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+  </div>
+
+  <p class="sign">— yours, always 💛</p>
+  <p class="date">27 · 05 · 2026</p>
+</div>
+
+<div class="ocean-wrap">
+  <canvas id="ocean"></canvas>
+</div>
+
+<script>
+/* ── ocean ── */
+const oc = document.getElementById('ocean');
+const ox = oc.getContext('2d');
+let ot = 0;
+
+function resizeOcean() {
+  oc.width = oc.offsetWidth;
+  oc.height = oc.offsetHeight;
+}
+resizeOcean();
+addEventListener('resize', resizeOcean);
+
+function drawOcean() {
+  const W = oc.width, H = oc.height;
+  ox.clearRect(0, 0, W, H);
+
+  const sea = ox.createLinearGradient(0, 0, 0, H);
+  sea.addColorStop(0, '#5ba3c9');
+  sea.addColorStop(1, '#1e6a8a');
+  ox.fillStyle = sea;
+  ox.fillRect(0, 0, W, H);
+
+  const wavesets = [
+    { amp: 7,  freq: 0.014, speed: 0.7, yp: 0.18, color: 'rgba(255,255,255,0.2)' },
+    { amp: 5,  freq: 0.020, speed: 1.1, yp: 0.42, color: 'rgba(255,255,255,0.14)' },
+    { amp: 4,  freq: 0.030, speed: 1.5, yp: 0.65, color: 'rgba(255,255,255,0.10)' },
+  ];
+  for (const w of wavesets) {
+    const wy = H * w.yp;
+    ox.beginPath(); ox.moveTo(0, wy);
+    for (let x = 0; x <= W; x += 4)
+      ox.lineTo(x, wy + Math.sin(x * w.freq + ot * w.speed) * w.amp);
+    ox.lineTo(W, H); ox.lineTo(0, H); ox.closePath();
+    ox.fillStyle = w.color; ox.fill();
+  }
+
+  /* sparkles */
+  ox.fillStyle = 'rgba(255,255,255,0.6)';
+  for (let i = 0; i < 14; i++) {
+    const sx = (i * 131 + ot * 25) % W;
+    const sy = H * 0.2 + Math.sin(sx * 0.025 + ot) * 6 + (i % 4) * 20;
+    ox.beginPath(); ox.arc(sx, sy, 1.2, 0, Math.PI * 2); ox.fill();
+  }
+
+  ot += 0.016;
+  requestAnimationFrame(drawOcean);
+}
+drawOcean();
+
+/* ── ducks ── */
+const dc = document.getElementById('duck');
+const dx = dc.getContext('2d');
+let dt = 0;
+
+function drawDuck(ctx, x, y, flip) {
+  ctx.save();
+  if (flip) { ctx.translate(x * 2, 0); ctx.scale(-1, 1); }
+  ctx.fillStyle = '#f5f0e0';
+  ctx.beginPath(); ctx.ellipse(x, y + 2, 17, 11, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#e8e0c8';
+  ctx.beginPath(); ctx.ellipse(x - 2, y + 3, 11, 6, -0.3, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#f5f0e0';
+  ctx.beginPath(); ctx.arc(x + 15, y - 6, 8, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#2e3a42';
+  ctx.beginPath(); ctx.arc(x + 18, y - 8, 1.6, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = '#f0a830';
+  ctx.beginPath();
+  ctx.moveTo(x + 23, y - 6); ctx.lineTo(x + 29, y - 5); ctx.lineTo(x + 23, y - 3);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#e8e0c8';
+  ctx.beginPath();
+  ctx.moveTo(x - 15, y - 2); ctx.lineTo(x - 23, y - 8); ctx.lineTo(x - 13, y + 2);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+}
+
+function duckLoop() {
+  dx.clearRect(0, 0, dc.width, dc.height);
+  dx.strokeStyle = 'rgba(91,163,201,0.4)';
+  dx.lineWidth = 1.5;
+  dx.beginPath();
+  for (let xx = 0; xx <= dc.width; xx += 3) {
+    const wy = 40 + Math.sin(xx * 0.04 + dt * 1.5) * 3;
+    xx === 0 ? dx.moveTo(xx, wy) : dx.lineTo(xx, wy);
+  }
+  dx.stroke();
+
+  const d1x = (dt * 26) % (dc.width + 80) - 10;
+  const d2x = dc.width - ((dt * 18 + 160) % (dc.width + 80));
+  drawDuck(dx, d1x, 32 + Math.sin(dt * 1.8) * 3, false);
+  drawDuck(dx, d2x, 34 + Math.sin(dt * 1.8 + 1.2) * 3, true);
+
+  dt += 0.016;
+  requestAnimationFrame(duckLoop);
+}
+duckLoop();
+
+/* ── word reveal ── */
+const lines = [
+  { id: 'p1', text: 'you are the breeze i never noticed i was breathing — quiet, constant, and somehow exactly what i needed.' },
+  { id: 'p2', text: 'i did not go looking for comfort. i did not know i was missing it. and yet here you are — woven into every soft moment i have ever felt at ease.' },
+  { id: 'p3', text: 'thank you for staying. thank you for existing. thank you for being the kind of presence the heart remembers before the mind does.' },
+];
+
+function revealWords(id, text, startDelay) {
+  const el = document.getElementById(id);
+  el.innerHTML = '';
+  const words = text.split(' ');
+  words.forEach((w, i) => {
+    const span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = w;
+    el.appendChild(span);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+    setTimeout(() => span.classList.add('show'), startDelay + i * 75);
+  });
+  return startDelay + words.length * 75;
+}
+
+let delay = 1600;
+for (const line of lines) {
+  delay = revealWords(line.id, line.text, delay) + 400;
+}
+</script>
 </body>
 </html>
