@@ -4,126 +4,145 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>For Noorarissya</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { min-height: 100vh; overflow-x: hidden; }
-body {
-  background: #f0f7fa;
-  font-family: 'Lato', sans-serif;
-  display: flex; flex-direction: column;
-  align-items: center; min-height: 100vh;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{
+  height:100dvh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:space-between;
+  background:linear-gradient(170deg,#dff0f7 0%,#eaf6fb 40%,#c8e8f5 100%);
+  font-family:'Lato',sans-serif;
+  padding:0;
 }
 
-.wrap {
-  position: relative; z-index: 1;
-  max-width: 540px; width: 100%;
-  text-align: center;
-  padding: 3rem 2rem 2rem;
-  flex: 1;
+/* frosted glass card */
+.card{
+  position:relative;z-index:2;
+  width:92%;max-width:400px;
+  margin-top:clamp(12px,3vh,28px);
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.75);
+  border-radius:24px;
+  padding:clamp(14px,3vh,22px) 22px clamp(12px,2.5vh,18px);
+  text-align:center;
+  box-shadow:0 8px 32px rgba(30,100,140,0.10);
+  flex-shrink:0;
 }
 
-.for-name {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.75rem; letter-spacing: 0.35em;
-  text-transform: uppercase; color: #3a7d99;
-  font-weight: 300;
-  opacity: 0; animation: rise 1s 0.3s ease forwards;
+.for-name{
+  font-size:0.68rem;letter-spacing:0.32em;
+  text-transform:uppercase;color:#3a8aaa;
+  font-weight:400;
+  opacity:0;animation:rise 0.8s 0.2s ease forwards;
 }
 
-.photo-wrap {
-  margin: 1.2rem auto;
-  width: 200px;
-  opacity: 0; animation: rise 1s 0.6s ease forwards;
+.photo-wrap{
+  margin:clamp(8px,1.5vh,14px) auto;
+  width:clamp(72px,18vw,95px);
+  opacity:0;animation:rise 0.8s 0.4s ease forwards;
 }
-.photo-wrap img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 20px rgba(30,100,130,0.15);
-  display: block;
-}
-
-.duck-wrap {
-  margin: 0.8rem auto 0.2rem;
-  opacity: 0; animation: rise 1s 0.9s ease forwards;
-  height: 55px;
+.photo-wrap img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:14px;
+  border:3px solid rgba(255,255,255,0.9);
+  box-shadow:0 4px 16px rgba(30,100,140,0.18);
+  display:block;
 }
 
-.line {
-  width: 50px; height: 1px;
-  background: rgba(60,140,170,0.3);
-  margin: 1rem auto 1.6rem;
-  opacity: 0; animation: rise 1s 1.1s ease forwards;
+.divider{
+  width:36px;height:1px;
+  background:rgba(60,138,170,0.3);
+  margin:clamp(8px,1.5vh,12px) auto;
+  opacity:0;animation:rise 0.8s 0.6s ease forwards;
 }
 
-.body {
-  opacity: 0; animation: rise 1s 1.3s ease forwards;
+.body{opacity:0;animation:rise 0.8s 0.8s ease forwards;}
+
+.body p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,4vw,1.18rem);
+  font-style:italic;font-weight:300;
+  color:#0f3d52;
+  line-height:1.85;
+  margin-bottom:clamp(8px,1.5vh,12px);
+}
+.body p:last-child{margin-bottom:0;}
+
+.word{display:inline;opacity:0;transition:opacity 0.4s ease;}
+.word.show{opacity:1;}
+
+.sign{
+  margin-top:clamp(8px,1.8vh,14px);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(0.95rem,3.5vw,1.05rem);
+  color:#1a6480;font-style:italic;font-weight:300;
+  opacity:0;animation:rise 0.8s 4s ease forwards;
+}
+.date{
+  margin-top:4px;
+  font-size:0.65rem;letter-spacing:0.16em;
+  color:#5a9fba;font-weight:300;
+  opacity:0;animation:rise 0.8s 4.3s ease forwards;
 }
 
-.body p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 3vw, 1.3rem);
-  font-style: italic; font-weight: 300;
-  color: #1a4a5e;
-  line-height: 2;
-  margin-bottom: 1.4rem;
-  text-shadow: 0 0 12px rgba(240,247,250,0.9), 0 0 24px rgba(240,247,250,0.7);
+@keyframes rise{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.word { display: inline; opacity: 0; transition: opacity 0.45s ease; }
-.word.show { opacity: 1; }
+/* ocean */
+.ocean-wrap{
+  width:100%;
+  height:clamp(110px,22vh,160px);
+  position:relative;z-index:1;
+  flex-shrink:0;overflow:hidden;
+}
+#ocean{display:block;width:100%;height:100%;}
 
-.sign {
-  margin-top: 2rem;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem; color: #1a5f7a;
-  font-style: italic; font-weight: 300;
-  text-shadow: 0 0 10px rgba(240,247,250,0.9);
-  opacity: 0; animation: rise 1s 4.5s ease forwards;
+/* floating bubbles bg */
+.bubble{
+  position:fixed;border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.35);
+  animation:float linear infinite;
+  pointer-events:none;z-index:0;
 }
-.date {
-  margin-top: 0.4rem;
-  font-size: 0.72rem; letter-spacing: 0.18em;
-  color: #5a9ab5; font-weight: 300;
-  opacity: 0; animation: rise 1s 4.8s ease forwards;
-  padding-bottom: 1rem;
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0.8);opacity:0}
+  10%{opacity:1}
+  90%{opacity:0.6}
+  100%{transform:translateY(-10vh) scale(1.1);opacity:0}
 }
-
-@keyframes rise {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.ocean-wrap {
-  width: 100%; position: relative;
-  height: 160px; flex-shrink: 0;
-  overflow: hidden;
-}
-canvas#ocean { display: block; width: 100%; height: 100%; }
 </style>
 </head>
 <body>
 
-<div class="wrap">
+<!-- background bubbles -->
+<div class="bubble" style="width:60px;height:60px;left:8%;animation-duration:12s;animation-delay:0s;"></div>
+<div class="bubble" style="width:35px;height:35px;left:75%;animation-duration:9s;animation-delay:2s;"></div>
+<div class="bubble" style="width:45px;height:45px;left:55%;animation-duration:14s;animation-delay:5s;"></div>
+<div class="bubble" style="width:25px;height:25px;left:30%;animation-duration:10s;animation-delay:1s;"></div>
+<div class="bubble" style="width:50px;height:50px;left:85%;animation-duration:16s;animation-delay:7s;"></div>
+<div class="bubble" style="width:20px;height:20px;left:18%;animation-duration:8s;animation-delay:3s;"></div>
+
+<div class="card">
   <p class="for-name">for noorarissya</p>
 
   <div class="photo-wrap">
     <img src="eri.jpg" alt="Noorarissya"/>
   </div>
 
-  <div class="duck-wrap">
-    <canvas id="duck" width="320" height="55" style="display:block;margin:0 auto;"></canvas>
-  </div>
-
-  <div class="line"></div>
+  <div class="divider"></div>
 
   <div class="body">
     <p id="p1"></p>
     <p id="p2"></p>
-    <p id="p3"></p>
   </div>
 
   <p class="sign">— yours, always 💛</p>
@@ -132,132 +151,103 @@ canvas#ocean { display: block; width: 100%; height: 100%; }
 
 <div class="ocean-wrap">
   <canvas id="ocean"></canvas>
+  <canvas id="duck" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
 </div>
 
 <script>
-/* ── ocean ── */
-const oc = document.getElementById('ocean');
-const ox = oc.getContext('2d');
-let ot = 0;
+/* ocean */
+const oc=document.getElementById('ocean');
+const ox=oc.getContext('2d');
+let ot=0;
+function resizeOc(){oc.width=oc.offsetWidth;oc.height=oc.offsetHeight;}
+resizeOc();addEventListener('resize',resizeOc);
 
-function resizeOcean() {
-  oc.width = oc.offsetWidth;
-  oc.height = oc.offsetHeight;
-}
-resizeOcean();
-addEventListener('resize', resizeOcean);
-
-function drawOcean() {
-  const W = oc.width, H = oc.height;
-  ox.clearRect(0, 0, W, H);
-
-  const sea = ox.createLinearGradient(0, 0, 0, H);
-  sea.addColorStop(0, '#5ba3c9');
-  sea.addColorStop(1, '#1e6a8a');
-  ox.fillStyle = sea;
-  ox.fillRect(0, 0, W, H);
-
-  const wavesets = [
-    { amp: 7,  freq: 0.014, speed: 0.7, yp: 0.18, color: 'rgba(255,255,255,0.2)' },
-    { amp: 5,  freq: 0.020, speed: 1.1, yp: 0.42, color: 'rgba(255,255,255,0.14)' },
-    { amp: 4,  freq: 0.030, speed: 1.5, yp: 0.65, color: 'rgba(255,255,255,0.10)' },
+function drawOcean(){
+  const W=oc.width,H=oc.height;
+  ox.clearRect(0,0,W,H);
+  const g=ox.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#5bafd4');g.addColorStop(1,'#1a6080');
+  ox.fillStyle=g;ox.fillRect(0,0,W,H);
+  const ws=[
+    {a:8,f:0.013,s:0.65,y:0.15,c:'rgba(255,255,255,0.22)'},
+    {a:6,f:0.020,s:1.05,y:0.40,c:'rgba(255,255,255,0.15)'},
+    {a:4,f:0.030,s:1.50,y:0.65,c:'rgba(255,255,255,0.10)'},
   ];
-  for (const w of wavesets) {
-    const wy = H * w.yp;
-    ox.beginPath(); ox.moveTo(0, wy);
-    for (let x = 0; x <= W; x += 4)
-      ox.lineTo(x, wy + Math.sin(x * w.freq + ot * w.speed) * w.amp);
-    ox.lineTo(W, H); ox.lineTo(0, H); ox.closePath();
-    ox.fillStyle = w.color; ox.fill();
+  for(const w of ws){
+    const wy=H*w.y;
+    ox.beginPath();ox.moveTo(0,wy);
+    for(let x=0;x<=W;x+=3)ox.lineTo(x,wy+Math.sin(x*w.f+ot*w.s)*w.a);
+    ox.lineTo(W,H);ox.lineTo(0,H);ox.closePath();
+    ox.fillStyle=w.c;ox.fill();
   }
-
-  /* sparkles */
-  ox.fillStyle = 'rgba(255,255,255,0.6)';
-  for (let i = 0; i < 14; i++) {
-    const sx = (i * 131 + ot * 25) % W;
-    const sy = H * 0.2 + Math.sin(sx * 0.025 + ot) * 6 + (i % 4) * 20;
-    ox.beginPath(); ox.arc(sx, sy, 1.2, 0, Math.PI * 2); ox.fill();
+  ox.fillStyle='rgba(255,255,255,0.55)';
+  for(let i=0;i<12;i++){
+    const sx=(i*139+ot*22)%W;
+    const sy=H*0.2+Math.sin(sx*0.025+ot)*5+(i%4)*18;
+    ox.beginPath();ox.arc(sx,sy,1.1,0,Math.PI*2);ox.fill();
   }
-
-  ot += 0.016;
-  requestAnimationFrame(drawOcean);
+  ot+=0.016;
 }
-drawOcean();
 
-/* ── ducks ── */
-const dc = document.getElementById('duck');
-const dx = dc.getContext('2d');
-let dt = 0;
+/* duck */
+const dc=document.getElementById('duck');
+const dx=dc.getContext('2d');
+let dt=0;
+function resizeDc(){dc.width=dc.offsetWidth;dc.height=dc.offsetHeight;}
+resizeDc();addEventListener('resize',resizeDc);
 
-function drawDuck(ctx, x, y, flip) {
+function drawDuck(ctx,x,y,flip){
   ctx.save();
-  if (flip) { ctx.translate(x * 2, 0); ctx.scale(-1, 1); }
-  ctx.fillStyle = '#f5f0e0';
-  ctx.beginPath(); ctx.ellipse(x, y + 2, 17, 11, 0, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#e8e0c8';
-  ctx.beginPath(); ctx.ellipse(x - 2, y + 3, 11, 6, -0.3, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#f5f0e0';
-  ctx.beginPath(); ctx.arc(x + 15, y - 6, 8, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#2e3a42';
-  ctx.beginPath(); ctx.arc(x + 18, y - 8, 1.6, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = '#f0a830';
-  ctx.beginPath();
-  ctx.moveTo(x + 23, y - 6); ctx.lineTo(x + 29, y - 5); ctx.lineTo(x + 23, y - 3);
-  ctx.closePath(); ctx.fill();
-  ctx.fillStyle = '#e8e0c8';
-  ctx.beginPath();
-  ctx.moveTo(x - 15, y - 2); ctx.lineTo(x - 23, y - 8); ctx.lineTo(x - 13, y + 2);
-  ctx.closePath(); ctx.fill();
+  if(flip){ctx.translate(x*2,0);ctx.scale(-1,1);}
+  ctx.fillStyle='#f5f0e0';
+  ctx.beginPath();ctx.ellipse(x,y+2,15,10,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#e8e0c8';
+  ctx.beginPath();ctx.ellipse(x-2,y+3,10,6,-0.3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#f5f0e0';
+  ctx.beginPath();ctx.arc(x+13,y-5,7,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#2e3a42';
+  ctx.beginPath();ctx.arc(x+16,y-7,1.4,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#f0a830';
+  ctx.beginPath();ctx.moveTo(x+20,y-5);ctx.lineTo(x+26,y-4);ctx.lineTo(x+20,y-2);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#e0d8c0';
+  ctx.beginPath();ctx.moveTo(x-13,y-2);ctx.lineTo(x-21,y-8);ctx.lineTo(x-11,y+2);ctx.closePath();ctx.fill();
   ctx.restore();
 }
 
-function duckLoop() {
-  dx.clearRect(0, 0, dc.width, dc.height);
-  dx.strokeStyle = 'rgba(91,163,201,0.4)';
-  dx.lineWidth = 1.5;
-  dx.beginPath();
-  for (let xx = 0; xx <= dc.width; xx += 3) {
-    const wy = 40 + Math.sin(xx * 0.04 + dt * 1.5) * 3;
-    xx === 0 ? dx.moveTo(xx, wy) : dx.lineTo(xx, wy);
-  }
-  dx.stroke();
-
-  const d1x = (dt * 26) % (dc.width + 80) - 10;
-  const d2x = dc.width - ((dt * 18 + 160) % (dc.width + 80));
-  drawDuck(dx, d1x, 32 + Math.sin(dt * 1.8) * 3, false);
-  drawDuck(dx, d2x, 34 + Math.sin(dt * 1.8 + 1.2) * 3, true);
-
-  dt += 0.016;
-  requestAnimationFrame(duckLoop);
+function loop(){
+  drawOcean();
+  const W=dc.width,H=dc.height;
+  dx.clearRect(0,0,W,H);
+  const waterY=H*0.28;
+  const d1x=(dt*20)%(W+80)-10;
+  const d2x=W-((dt*14+200)%(W+80));
+  drawDuck(dx,d1x,waterY+Math.sin(dt*1.8)*3,false);
+  drawDuck(dx,d2x,waterY+Math.sin(dt*1.8+1.3)*3,true);
+  dt+=0.016;
+  requestAnimationFrame(loop);
 }
-duckLoop();
+loop();
 
-/* ── word reveal ── */
-const lines = [
-  { id: 'p1', text: 'you are the breeze i never noticed i was breathing — quiet, constant, and somehow exactly what i needed.' },
-  { id: 'p2', text: 'i did not go looking for comfort. i did not know i was missing it. and yet here you are — woven into every soft moment i have ever felt at ease.' },
-  { id: 'p3', text: 'thank you for staying. thank you for existing. thank you for being the kind of presence the heart remembers before the mind does.' },
+/* word reveal */
+const lines=[
+  {id:'p1',text:'you are the breeze i never noticed i was breathing — quiet, constant, and somehow exactly what i needed.'},
+  {id:'p2',text:'thank you for staying. thank you for existing. thank you for being the kind of presence the heart remembers before the mind does.'},
 ];
-
-function revealWords(id, text, startDelay) {
-  const el = document.getElementById(id);
-  el.innerHTML = '';
-  const words = text.split(' ');
-  words.forEach((w, i) => {
-    const span = document.createElement('span');
-    span.className = 'word';
-    span.textContent = w;
-    el.appendChild(span);
-    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
-    setTimeout(() => span.classList.add('show'), startDelay + i * 75);
+function reveal(id,text,start){
+  const el=document.getElementById(id);
+  el.innerHTML='';
+  const words=text.split(' ');
+  words.forEach((w,i)=>{
+    const s=document.createElement('span');
+    s.className='word';s.textContent=w;
+    el.appendChild(s);
+    if(i<words.length-1)el.appendChild(document.createTextNode(' '));
+    setTimeout(()=>s.classList.add('show'),start+i*70);
   });
-  return startDelay + words.length * 75;
+  return start+words.length*70;
 }
-
-let delay = 1600;
-for (const line of lines) {
-  delay = revealWords(line.id, line.text, delay) + 400;
-}
+let d=1200;
+for(const l of lines)d=reveal(l.id,l.text,d)+350;
 </script>
 </body>
 </html>
